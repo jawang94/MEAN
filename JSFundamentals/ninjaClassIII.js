@@ -1,10 +1,10 @@
 class Ninja {
-  constructor(name) {
-    var _speed = 3;
-    var _strength = 3;
+  constructor(name, speed = 3, strength = 3, health = 100) {
+    var _speed = speed;
+    var _strength = strength;
     this.name = name;
     this._ninja = true;
-    this._health = 100;
+    this._health = health;
 
     this.getStrength = function() {
       return _strength;
@@ -14,7 +14,7 @@ class Ninja {
     };
   }
   drinkSake() {
-    health += 10;
+    this._health += 10;
   }
   isNinja(target) {
     return target.ninja;
@@ -83,6 +83,17 @@ class Ninja {
   }
 }
 
+class Sensei extends Ninja {
+  constructor(name, speed = 10, strength = 10, health = 200) {
+    super(name, speed, strength, health);
+  }
+
+  speakWisdom() {
+    super.drinkSake();
+    console.log("That was some wise sake boy~");
+  }
+}
+
 var ninja1 = new Ninja("Hyabusa");
 ninja1.sayName();
 // -> "My ninja name is Hyabusa!"
@@ -108,3 +119,13 @@ function Plebian(name) {
 
 var pleb = new Plebian("Jason");
 redNinja.punch(pleb);
+
+redNinja.drinkSake();
+console.log(redNinja.health);
+
+// example output
+const superSensei = new Sensei("Master Splinter");
+superSensei.speakWisdom();
+// -> "What one programmer can do in one month, two programmers can do in two months."
+superSensei.showStats();
+// -> "Name: Master Splinter, Health: 210, Speed: 10, Strength: 10"
