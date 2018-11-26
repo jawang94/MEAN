@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Trivia</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="trivia.js"></script>
+    <style>
+      #outerBox {
+        background-color: aliceblue;
+        width: 100%;
+      }
+      #box {
+        background-color: beige;
+        height: 75px;
+        text-align: center;
+      }
+      input,
+      label {
+        display: none;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <button>Gimme those trivia questions boi</button>
+      <h1>Trivia Night</h1>
+      <h2 id="points">Points:</h2>
+      <h3 id="result"></h3>
+      <h3 id="trivia"></h3>
+      <div id="container"></div>
+    </div>
+  </body>
+</html>
