@@ -1,0 +1,19 @@
+* {
+    background-color: beige;
+}
+
+h1 {
+    display: block;
+    text-align: left;
+}
+
+img {
+    width: auto;
+    height: 200px;
+}
+
+h2 {
+    display: block;
+    background-color: purple;
+    text-align: left;
+}
