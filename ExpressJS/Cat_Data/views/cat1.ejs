@@ -8,10 +8,10 @@
     <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
   </head>
   <body>
-    <h1>Details Page for Robin:</h1>
+    <h1>Details Page for <%= cat[0].name%>:</h1>
     <img src="../images/cat.jpg" alt="A Russian Blue Cat" />
-    <h2>Favorite Food: Rat</h2>
-    <h2>Age: 4</h2>
-    <h2>Sleeping spots: Trash Can</h2>
+    <h2>Favorite Food: <%= cat[0].food%></h2>
+    <h2>Age: <%= cat[0].age%></h2>
+    <h2>Sleeping spots: <%= cat[0].sleep%></h2>
   </body>
 </html>
