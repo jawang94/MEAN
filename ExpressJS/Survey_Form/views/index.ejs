@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Form</title>
+  </head>
+  <body>
+    <form action="/submit" method="POST">
+      <label for="name">Your Name: </label>
+      <input type="text" name="name" id="name" />
+      <label for="dojo">Dojo Location: </label>
+      <select name="dojo" id="dojo">
+        <option value="Seattle">Seattle</option>
+        <option value="Mountain View">Mountain View</option>
+        <option value="Denver">Denver</option>
+        <option value="Burbank">Burbank</option>
+      </select>
+      <label for="language">Favorite Language: </label>
+      <select name="language" id="language">
+        <option value="Javascript">Javascript</option>
+        <option value="Python">Python</option>
+        <option value="Java">Java</option>
+        <option value="C#">C#</option>
+      </select>
+      <label for="comment">Comment(optional): </label>
+      <textarea
+        name="comment"
+        rows="10"
+        cols="30"
+        placeholder="Enter a comment"
+      ></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
