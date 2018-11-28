@@ -1,0 +1,13 @@
+#go {
+    width: 300px;
+    height: 150px;
+    background-color: aquamarine;
+    margin-top: -25px;
+}
+
+#reset {
+    width: 150px;
+    height: 75px;
+    background-color: red;
+    display: block;
+}
