@@ -1,0 +1,98 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chatroom</title>
+    <link rel="stylesheet" href="../stylesheets/index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var socket = io.connect("http://localhost:8000");
+
+        $("#userForm").on("submit", function(e) {
+          e.preventDefault();
+          socket.emit("got_a_new_user", {
+            name: $("#name").val(),
+            id: socket.id
+          });
+        });
+
+        $("#messageForm").on("submit", function(e) {
+          e.preventDefault();
+          socket.emit("got_a_new_message", {
+            message: $("#message").val(),
+            id: socket.id
+          });
+        });
+
+        socket.on("new_user", function(data) {
+          console.log("got that user");
+          $("#container").fadeOut(1000);
+          $("#conversation_board").fadeIn(1000);
+          $("#messageForm").fadeIn(1000);
+          $("#title").fadeIn(1000);
+          $("#user_list").fadeIn(1000);
+          var myElement = document.getElementById("user_list");
+          while (myElement.firstChild) {
+            myElement.removeChild(myElement.firstChild);
+          }
+          var title = document.createElement("h4");
+          title.innerHTML = "User List: ";
+          document.getElementById("user_list").appendChild(title);
+          data.users.forEach(element => {
+            var userDiv = document.createElement("div");
+            userDiv.setAttribute("id", "" + element.id);
+            var userName = document.createElement("h6");
+            userName.innerHTML = element.name;
+            userDiv.appendChild(userName);
+            document.getElementById("user_list").appendChild(userDiv);
+          });
+        });
+
+        socket.on("new_message", function(data) {
+          var message = document.createElement("p");
+          message.innerHTML = data.name + ": " + data.message;
+          document.getElementById("conversation_board").append(message);
+        });
+
+        socket.on("disconnect_user", function(data) {
+          alert(data.name + " has disconnected from the server");
+          var myElement = document.getElementById("user_list");
+          while (myElement.firstChild) {
+            myElement.removeChild(myElement.firstChild);
+          }
+          var title = document.createElement("h4");
+          title.innerHTML = "User List: ";
+          document.getElementById("user_list").appendChild(title);
+          data.users.forEach(element => {
+            var userDiv = document.createElement("div");
+            userDiv.setAttribute("id", "" + element.id);
+            var userName = document.createElement("h6");
+            userName.innerHTML = element.name;
+            userDiv.appendChild(userName);
+            document.getElementById("user_list").appendChild(userDiv);
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1 id="title">Conversation Board</h1>
+    <div id="conversation_board"></div>
+    <div id="user_list"></div>
+    <form id="messageForm">
+      <input type="text" id="message" placeholder="enter your message here" />
+      <button type="submit">Send</button>
+    </form>
+    <div id="container">
+      <p>Welcome to the world's #1 messaging platform:</p>
+      <p>Your name:</p>
+      <form id="userForm">
+        <input type="text" id="name" /> <button type="submit">OK</button>
+      </form>
+    </div>
+  </body>
+</html>
