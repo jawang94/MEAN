@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chatroom</title>
+    <link rel="stylesheet" href="../stylesheets/index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script text="text/javascript">
+      $(document).ready(function() {
+        var socket = io.connect("http://localhost:8000");
+
+        $("#userForm").on("submit", function(e) {
+          e.preventDefault();
+          socket.emit("got_a_new_user", {
+            name: $("#name").val(),
+            id: socket.id
+          });
+        });
+
+        $("#cancel").click(function(e) {
+          e.preventDefault();
+          document.getElementById("name").innerText = "";
+        });
+
+        socket.on("new_user", function(data) {
+          console.log("got that user");
+          $("#container").fadeOut(1000);
+          var myElement = document.getElementById("users");
+          while (myElement.firstChild) {
+            myElement.removeChild(myElement.firstChild);
+          }
+          data.users.forEach(element => {
+            var userDiv = document.createElement("div");
+            userDiv.setAttribute("id", "" + element.id);
+            var userName = document.createElement("h2");
+            userName.innerHTML = element.name;
+            userDiv.appendChild(userName);
+            document.getElementById("users").appendChild(userDiv);
+          });
+        });
+
+        socket.on("disconnect_user", function(data) {
+            var name = document.getElementById("" + data.id).childNodes[0].innerHTML
+          console.log(name + " has disconnected.");
+          $("#" + data.id).fadeOut(1000);
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1 id="id" value=<%= id %>><%= id %></h1>
+    <div id="users"></div>
+    <div id="container">
+      <p>The page at https://localhost says:</p>
+      <p>Your name:</p>
+      <form id="userForm">
+        <input type="text" id="name" /> <button type="submit">OK</button>
+        <button type="button">Cancel</button>
+      </form>
+    </div>
+    <form id="disconnect"><button type="submit">Disconnect</button></form>
+  </body>
+</html>
