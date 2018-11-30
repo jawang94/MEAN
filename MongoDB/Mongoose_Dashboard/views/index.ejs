@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mongoose Dashboard</title>
+    <link rel="stylesheet" href="../stylesheets/quotes.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script></script>
+  </head>
+  <body>
+    <h1>Animals List:</h1>
+    <button onclick="window.location.href='/mongooses/new'">New Animal</button>
+    <div id="animals">
+      <ul>
+        <% if (animals) { %> <% animals.forEach(element => { %>
+        <li>
+          <p>Animal: <%= element.animal %></p>
+          <p>
+            Show:
+            <a href="/mongooses/<%= element._id %>"><%= element.name %></a>
+          </p>
+          <p>
+            Edit:
+            <a href="/mongooses/edit/<%= element._id %>"><%= element.name %></a>
+          </p>
+        </li>
+        <% }); %> <% }; %>
+      </ul>
+    </div>
+  </body>
+</html>

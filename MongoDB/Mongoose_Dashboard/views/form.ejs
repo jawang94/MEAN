@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mongoose Dashboard</title>
+    <link rel="stylesheet" href="../stylesheets/quotes.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script></script>
+  </head>
+  <body>
+    <% if(messages.registration) { %> <%- JSON.stringify(messages) %> <% for
+    (var x of messages.registration) { %>
+    <h3><%= x %></h3>
+    <% } %> <% } %>
+    <h1>New Animal:</h1>
+    <form action="/mongooses" method="POST">
+      <label for="animal">Animal: </label>
+      <input type="text" name="animal" id="animal" />
+      <label for="name">Name of Animal: </label>
+      <input type="text" name="name" id="name" />
+      <button type="submit">Create</button>
+    </form>
+  </body>
+</html>

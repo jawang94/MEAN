@@ -1,0 +1,21 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mongoose Dashboard</title>
+    <link rel="stylesheet" href="../stylesheets/quotes.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script></script>
+  </head>
+  <body>
+    <% if(messages.registration) { %> <%- JSON.stringify(messages) %> <% for
+    (var x of messages.registration) { %>
+    <h3><%= x %></h3>
+    <% } %> <% } %> <% if (animal) { %> <% animal.forEach(element => { %>
+    <h1>Animal: <%= element.animal; %></h1>
+    <h1>Name: <%= element.name; %></h1>
+    <a href="/mongooses/destroy/<%= element._id %>">Delete</a> <% }); %> <% };
+    %>
+  </body>
+</html>
