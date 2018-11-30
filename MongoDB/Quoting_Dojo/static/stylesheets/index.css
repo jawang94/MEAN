@@ -1,0 +1,32 @@
+* {
+    background-color: aliceblue;
+    margin: 1%;
+}
+
+h1 {
+    position: absolute;
+    top: 25%;
+    left: 35%;
+}
+
+.form {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    right: 50%;
+    width: 15%;
+    padding: 5%;
+    border: 3px solid blue;
+}
+
+#submit {
+    height: 50px;
+    width: 100px;
+    background-color: greenyellow
+}
+
+#skip {
+    height: 50px;
+    width: 100px;
+    background-color: aquamarine
+}

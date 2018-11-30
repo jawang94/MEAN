@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mongoose Test</title>
+    <link rel="stylesheet" href="../stylesheets/quotes.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var socket = io.connect("http://localhost:8000");
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Here are the awesome quotes!</h1>
+    <div id="quotes">
+      <ul>
+        <% quotes.forEach(element => { %>
+        <li>
+          <p><%= element.quote %></p>
+          <p>- <%= element.name %> at <%= element.createdAt %></p>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>

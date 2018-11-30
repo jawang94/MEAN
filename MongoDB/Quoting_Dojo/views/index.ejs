@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mongoose Test</title>
+    <link rel="stylesheet" href="../stylesheets/index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var socket = io.connect("http://localhost:8000");
+
+        socket.on("confirm", function() {
+          console.log("You have been connected!");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to the Quoting Dojo</h1>
+    <div class="form">
+      <% if(messages.registration) { %> <%- JSON.stringify(messages) %><% for
+      (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+      <% } %> <% } %>
+      <form action="/quotes" method="POST">
+        <label for="name">Your name: </label>
+        <input type="text" name="name" placeholder="name" id="name" />
+        <label for="quote">Your quote: </label>
+        <input type="text" name="quote" placeholder="quote" id="quote" />
+        <button type="submit" id="submit">Add My Quote!</button>
+        <button
+          type="button"
+          onclick="window.location.href='/quotes'"
+          id="skip"
+        >
+          Skip to quotes!
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
