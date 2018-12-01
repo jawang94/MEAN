@@ -1,0 +1,18 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home Screen</title>
+  </head>
+  <body>
+    <h1>You have logged in!</h1>
+    <% user.forEach(element => { %>
+    <h1>Welcome: <%= element.first_name %> <%= element.last_name %></h1>
+    <% }) %>
+    <form action="/logout" method="POST">
+      <input type="hidden" name="userId" id="userId" value="<%= user._id %>" />
+      <button type="submit">Logout</button>
+    </form>
+  </body>
+</html>
