@@ -76,8 +76,6 @@ app.get("/mongooses/edit/:id", function(req, res) {
   });
 });
 
-var animalId = 0;
-
 app.post("/mongooses", function(req, res) {
   console.log("Post Data: ", req.body);
   var animal = new Animal({
@@ -87,7 +85,6 @@ app.post("/mongooses", function(req, res) {
   animal
     .save()
     .then(item => {
-      animalId++;
       res.redirect("/");
     })
     .catch(err => {

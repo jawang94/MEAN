@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>The Dojo Message Board</h1>
+    <% if(messages.registration) { %> <%- JSON.stringify(messages) %> <% for
+    (var x of messages.registration) { %>
+    <h3><%= x %></h3>
+    <% } %> <% } %>
+    <form action="/message" method="POST">
+      <input type="text" name="name" placeholder="Your name" />
+      <input type="text" name="message" placeholder="Your message" />
+      <button type="submit">Post message</button>
+    </form>
+    <div id="messages">
+      <% if (messages) { %> <% messages.forEach(element => { %>
+      <ul>
+        <li>
+          <h3>Name: <%= element.name %></h3>
+          <h3>Message: <%= element.message %></h3>
+          <% if (element.comments.length > 0) { %> <%
+          element.comments.forEach(element => { %>
+          <p>Name: <%= element.name %></p>
+          <p>Comment: <%= element.comment %></p>
+          <% }) %> <% } %>
+          <form action="/comment/<%= element._id %>" method="POST">
+            <input type="text" name="name" placeholder="Your name" />
+            <input type="text" name="comment" placeholder="Your comment" />
+            <button type="submit">Post comment</button>
+          </form>
+        </li>
+      </ul>
+      <% }); %> <% }; %>
+    </div>
+  </body>
+</html>
