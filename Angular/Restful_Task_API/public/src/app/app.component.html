@@ -1,11 +1,34 @@
-<div class="tasks">
-  <h1>Restful Tasks API</h1>
-  <h1>All the tasks:</h1>
-  <p *ngFor="let task of tasks">{{ task.title }} - {{ task.description }}</p>
-</div>
-<div class="tasks">
-  <h1>The third task:</h1>
-  <p *ngFor="let task of thirdTask">
-    {{ task.title }} - {{ task.description }}
-  </p>
-</div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="tasks">
+      Enter task ID:
+      <input type="text" (keyup)="getTasksByInput($event.which)" />
+
+      <h1>Restful Tasks API</h1>
+      <button (click)="getTasksFromService()">GET ALL TASKS</button>
+      <div *ngFor="let task of tasks; let rowIndex = index">
+        <div></div>
+        <p>{{ task.title }} - {{ task.description }}</p>
+        <button
+          id="{{rowIndex+1}}"
+          value="{{task._id}}"
+          (click)="getOneTaskFromService(task._id)"
+        >
+          SHOW
+        </button>
+      </div>
+    </div>
+
+    <div class="showTask" *ngFor="let task of showTask">
+      <h3>{{ task.title }}</h3>
+      <h4>{{ task.description }}</h4>
+    </div>
+  </body>
+</html>
