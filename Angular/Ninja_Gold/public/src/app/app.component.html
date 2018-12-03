@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Angular Gold</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="top">
+        <h3>Your gold:</h3>
+        <p>{{ score }}</p>
+        <button (click)="saveClick()">Save Score</button>
+        <button (click)="leaderboardClick()">Leaderboard</button>
+      </div>
+
+      <div id="menu">
+        <div class="option">
+          <h1>Farm</h1>
+          <h2>(earns 2-5 golds)</h2>
+          <input type="hidden" name="building" value="farm" />
+          <button (click)="farmClick()">Find Gold!</button>
+        </div>
+        <div class="option">
+          <h1>Cave</h1>
+          <h2>(earns 5-10 golds)</h2>
+          <input type="hidden" name="building" value="cave" />
+          <button (click)="caveClick()">Find Gold!</button>
+        </div>
+        <div class="option">
+          <h1>House</h1>
+          <h2>(earns 7-15 golds)</h2>
+          <input type="hidden" name="building" value="house" />
+          <button (click)="houseClick()">Find Gold!</button>
+        </div>
+        <div class="option">
+          <h1>Casino</h1>
+          <h2>(earns/takes 0-100 golds)</h2>
+          <input type="hidden" name="building" value="casino" />
+          <button (click)="casinoClick()">Find Gold!</button>
+        </div>
+      </div>
+
+      <div id="activity">
+        <h4>Activities:</h4>
+        <div *ngFor="let message of messages">
+          <p>{{ message.message }}</p>
+        </div>
+      </div>
+      <button (click)="resetClick()">Reset</button>
+
+      <div id="activity">
+        <h4>Leaderboard:</h4>
+        <div *ngFor="let user of leaderboard">
+          <p>{{ user.username }} {{ user.score }}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

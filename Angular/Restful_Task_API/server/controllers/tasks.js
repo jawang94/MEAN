@@ -3,12 +3,12 @@ const mongoose = require("mongoose"),
 
 module.exports = {
   index: function(req, res) {
-    Task.find({}, function(err, users) {
+    Task.find({}, function(err, tasks) {
       if (err) {
         console.log("Returned error", err);
         res.json({ message: "Error", error: err });
       } else {
-        res.json({ message: "Success", data: users });
+        res.json({ message: "Success", data: tasks });
       }
     });
   },
