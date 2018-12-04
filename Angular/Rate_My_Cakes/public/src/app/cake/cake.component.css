@@ -1,0 +1,13 @@
+.cake {
+    text-align: center;
+    margin: 0 auto;
+    border: 3px solid #dfe3ee;
+    background-color: #8b9dc3;
+    padding: 1%;
+    margin: 1%;
+}
+
+img {
+    max-height: 200px;
+    max-width: auto;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rate My Cakes</title>
+  </head>
+  <body>
+    <div style="text-align:center; padding: 1%; ">
+      <h1>{{ title }}!</h1>
+    </div>
+
+    <div class="newCake">
+      <h1>Submit a cake to be rated</h1>
+      <form (submit)="onSubmit()">
+        <p>{{ newCake | json }}</p>
+        <input
+          type="text"
+          name="newCake.baker"
+          [(ngModel)]="newCake.baker"
+          placeholder="Baker Name"
+        />
+        <input
+          type="text"
+          name="newCake.imageURL"
+          [(ngModel)]="newCake.imageURL"
+          placeholder="Image URL"
+        />
+        <input type="submit" value="Submit Cake" />
+      </form>
+    </div>
+
+    <div class="cakes">
+      <h1>Cake List</h1>
+      <div *ngFor="let cake of cakes" class="outerCakeBox">
+        <div class="cakeBox">
+          <h3 style="margin-right: 5%;">{{ cake.baker }}</h3>
+          <img
+            (click)="cakeToShow(cake)"
+            src="{{ cake.imageURL }}"
+            alt="A picture of a cake"
+          />
+          <form (ngSubmit)="onSubmitRate(cake)">
+            <h3>Rate this cake by {{ cake.baker }}</h3>
+            <select
+              type="text"
+              name="rateCake.rating"
+              [(ngModel)]="rateCake.rating"
+            >
+              <option value="1">1 Star</option>
+              <option value="2">2 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="5">5 Stars</option>
+            </select>
+            <input
+              type="text"
+              name="rateCake.comment"
+              [(ngModel)]="rateCake.comment"
+              placeholder="Comment here"
+            />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <app-cake
+      *ngIf="selectedCake"
+      [cakeToShow]="selectedCake"
+      [cakeToShowRating]="selectedCakeRating"
+    ></app-cake>
+  </body>
+</html>
