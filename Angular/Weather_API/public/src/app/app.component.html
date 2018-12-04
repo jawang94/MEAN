@@ -1,0 +1,21 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather API</title>
+  </head>
+  <body>
+    <div style="text-align:center">
+      <h1>{{ title }}!</h1>
+    </div>
+    <button [routerLink]="['/seattle']">Seattle, WA</button>
+    <button [routerLink]="['/sanjose']">San Jose, CA</button>
+    <button [routerLink]="['/burbank']">Burbank, CA</button>
+    <button [routerLink]="['/dallas']">Dallas, TX</button>
+    <button [routerLink]="['/dc']">Washington, D.C.</button>
+    <button [routerLink]="['/chicago']">Chicago, IL</button>
+
+    <router-outlet></router-outlet>
+  </body>
+</html>
