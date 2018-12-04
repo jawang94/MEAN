@@ -36,12 +36,13 @@
       <div *ngFor="let task of tasks; let rowIndex = index">
         <div></div>
         <p>{{ task.title }} - {{ task.description }}</p>
+        <button (click)="taskToShow(task)">SHOW</button>
         <button
           id="{{rowIndex+1}}"
           value="{{task._id}}"
           (click)="getOneTaskFromService(task._id)"
         >
-          SHOW / EDIT
+          EDIT
         </button>
         <button
           value="{{task._id}}"
@@ -53,17 +54,12 @@
     </div>
 
     <div class="showTask" *ngFor="let task of showTask">
-      <h1>Editing task {{ task._id }}</h1>
+      <h1>Editing: {{ task.title }}</h1>
       <form (ngSubmit)="onSubmitEdit(task)">
-        <!-- use the json pipe to see how newTask changes in real time -->
-        <p>
-          Old Title: {{ task.title | json }} New Title:
-          {{ editTask.title | json }}
-        </p>
-        <p>
-          Old Description: {{ task.description | json }} New Description:
-          {{ editTask.description | json }}
-        </p>
+        <p>Old Title: {{ task.title | json }}</p>
+        <h4>New Title: {{ editTask.title | json }}</h4>
+        <p>Old Description: {{ task.description | json }}</p>
+        <h4>New Description: {{ editTask.description | json }}</h4>
         <input
           type="text"
           name="editTask.title"
@@ -79,5 +75,7 @@
         <input type="submit" value="Edit Task" />
       </form>
     </div>
+
+    <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task>
   </body>
 </html>

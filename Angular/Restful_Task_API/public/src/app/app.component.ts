@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   tasks;
   taskStatus: boolean = false;
   showTask;
+  selectedTask: any;
   idArr = [];
 
   constructor(private _httpService: HttpService) {}
@@ -103,5 +104,9 @@ export class AppComponent implements OnInit {
       this.tasks = data["data"];
       this.taskStatus = true;
     });
+  }
+
+  taskToShow(task) {
+    this.selectedTask = task;
   }
 }
