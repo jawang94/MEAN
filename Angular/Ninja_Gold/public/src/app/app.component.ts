@@ -35,7 +35,9 @@ export class AppComponent implements OnInit {
     if (this.messages.length > 5) {
       this.messages = [];
     }
-    this.messages.push({ message: "You have gained " + x + " coins" });
+    this.messages.push({
+      message: "You have gained " + x + " coins from the farm"
+    });
     console.log("You have gained " + x + " coins", this.score);
   }
   caveClick() {
@@ -44,7 +46,9 @@ export class AppComponent implements OnInit {
     if (this.messages.length > 5) {
       this.messages = [];
     }
-    this.messages.push({ message: "You have gained " + x + " coins" });
+    this.messages.push({
+      message: "You have gained " + x + " coins from the cave"
+    });
     console.log("You have gained " + x + " coins", this.score);
   }
   houseClick() {
@@ -53,7 +57,9 @@ export class AppComponent implements OnInit {
     if (this.messages.length > 5) {
       this.messages = [];
     }
-    this.messages.push({ message: "You have gained " + x + " coins" });
+    this.messages.push({
+      message: "You have gained " + x + " coins from the house"
+    });
     console.log("You have gained " + x + " coins", this.score);
   }
   casinoClick() {
@@ -63,10 +69,14 @@ export class AppComponent implements OnInit {
       this.messages = [];
     }
     if (x >= 0) {
-      this.messages.push({ message: "You have gained " + x + " coins" });
+      this.messages.push({
+        message: "You have gained " + x + " coins from the casino"
+      });
       console.log("You have gained " + x + " coins", this.score);
     } else {
-      this.messages.push({ message: "You have lost " + x + " coins" });
+      this.messages.push({
+        message: "You have lost " + x + " coins from the casino"
+      });
       console.log("You have lost " + Math.abs(x) + " coins", this.score);
     }
   }
