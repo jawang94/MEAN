@@ -8,7 +8,9 @@ import { Type } from "@angular/compiler";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = "MEAN";
+  newTask: any;
+  editTask: any;
+  editId: any;
   tasks;
   taskStatus: boolean = false;
   showTask;
@@ -16,7 +18,21 @@ export class AppComponent implements OnInit {
 
   constructor(private _httpService: HttpService) {}
   ngOnInit() {
-    this.getTasksByInput();
+    this.newTask = { title: "", description: "" };
+    this.editTask = { title: "", description: "" };
+  }
+
+  onSubmit() {
+    let observable = this._httpService.addTask(this.newTask);
+    observable.subscribe(data => console.log("Got our new task!", data));
+    this.newTask = { editId: "", title: "", description: "" };
+  }
+
+  onSubmitEdit() {
+    console.log("submitting...", this.editTask);
+    let observable = this._httpService.editTask(this.editTask);
+    observable.subscribe(data => console.log("Edited task!", data));
+    this.editTask = { editId: "", title: "", description: "" };
   }
 
   getTasksFromService() {
@@ -43,7 +59,7 @@ export class AppComponent implements OnInit {
         counter++;
       });
       console.log(this.idArr);
-      let id: String;
+      let id: string;
       this.idArr.forEach(element => {
         if (element[1] === num) {
           id = element[0];
@@ -53,28 +69,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getOneTaskFromService(taskID: String) {
+  getOneTaskFromService(taskID: string) {
     let observable = this._httpService.getOneTask(taskID);
     observable.subscribe(data => {
       console.log("Got one task!", data);
       this.showTask = data["data"];
     });
-  }
-
-  onButtonClickTasks(): void {
-    console.log(`Click event is working`);
-  }
-  onButtonClickParam(num: Number): void {
-    console.log(`Click event is working with num param: ${num}`);
-    let observable = this._httpService.postToServer({ data: num });
-    observable.subscribe(data => console.log("Got our data!", data));
-  }
-  onButtonClickParams(num: Number, str: String): void {
-    console.log(
-      `Click event is working with num param: ${num} and str param: ${str}`
-    );
-  }
-  onButtonClickEvent(event: any): void {
-    console.log(`Click event is working with event: ${event}`);
   }
 }

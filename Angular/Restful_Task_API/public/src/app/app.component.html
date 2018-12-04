@@ -3,10 +3,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Restful Tasks</title>
   </head>
 
   <body>
+    <div class="newTask">
+      <h1>Create a new task</h1>
+      <form (submit)="onSubmit()">
+        <!-- use the json pipe to see how newTask changes in real time -->
+        <p>{{ newTask | json }}</p>
+        <input
+          type="text"
+          name="newTask.title"
+          [(ngModel)]="newTask.title"
+          placeholder="Title"
+        />
+        <input
+          type="text"
+          name="newTask.description"
+          [(ngModel)]="newTask.description"
+          placeholder="Description"
+        />
+        <input type="submit" value="Create Task" />
+      </form>
+    </div>
     <div class="tasks">
       Enter task ID:
       <input type="text" (keyup)="getTasksByInput($event.which)" />
@@ -27,8 +47,37 @@
     </div>
 
     <div class="showTask" *ngFor="let task of showTask">
-      <h3>{{ task.title }}</h3>
-      <h4>{{ task.description }}</h4>
+      <h1>Editing task {{ task._id }}</h1>
+      <form (submit)="onSubmitEdit()">
+        <!-- use the json pipe to see how newTask changes in real time -->
+        <p>
+          Old Title: {{ task.title | json }} New Title:
+          {{ editTask.title | json }}
+        </p>
+        <p>
+          Old Description: {{ task.description | json }} New Description:
+          {{ editTask.description | json }}
+        </p>
+        <input
+          type="hidden"
+          name="editTask.editId"
+          [(ngModel)]="editTask.editId"
+          value="{{user.userId}}"
+        />
+        <input
+          type="text"
+          name="editTask.title"
+          [(ngModel)]="editTask.title"
+          placeholder="{{task.title}}"
+        />
+        <input
+          type="text"
+          name="editTask.description"
+          [(ngModel)]="editTask.description"
+          placeholder="{{task.description}}"
+        />
+        <input type="submit" value="Edit Task" />
+      </form>
     </div>
   </body>
 </html>

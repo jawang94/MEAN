@@ -13,6 +13,7 @@ module.exports = {
     });
   },
   new: function(req, res) {
+    console.log("got the request", req.body);
     var task = new Task({
       title: req.body.title,
       description: req.body.description,
@@ -48,6 +49,7 @@ module.exports = {
     });
   },
   update: function(req, res) {
+    console.log("got that edit request", req.body);
     Task.updateOne(
       { _id: req.params.id },
       {
