@@ -10,7 +10,6 @@ import { Type } from "@angular/compiler";
 export class AppComponent implements OnInit {
   newTask: any;
   editTask: any;
-  editId: any;
   tasks;
   taskStatus: boolean = false;
   showTask;
@@ -19,19 +18,34 @@ export class AppComponent implements OnInit {
   constructor(private _httpService: HttpService) {}
   ngOnInit() {
     this.newTask = { title: "", description: "" };
-    this.editTask = { title: "", description: "" };
+    this.editTask = { editId: "", title: "", description: "" };
   }
 
   onSubmit() {
     let observable = this._httpService.addTask(this.newTask);
     observable.subscribe(data => console.log("Got our new task!", data));
-    this.newTask = { editId: "", title: "", description: "" };
+    this.newTask = { title: "", description: "" };
+    let updated_observable = this._httpService.getTasks();
+    updated_observable.subscribe(data => {
+      console.log("Updated the task list!", data);
+      this.tasks = data["data"];
+      this.taskStatus = true;
+    });
   }
 
-  onSubmitEdit() {
-    console.log("submitting...", this.editTask);
+  onSubmitEdit(task) {
+    console.log("submitting...", this.editTask, task);
+    this.editTask.editId = task._id;
     let observable = this._httpService.editTask(this.editTask);
-    observable.subscribe(data => console.log("Edited task!", data));
+    observable.subscribe(data => {
+      console.log("Edited task!", data);
+    });
+    let updated_observable = this._httpService.getTasks();
+    updated_observable.subscribe(data => {
+      console.log("Updated the task list!", data);
+      this.tasks = data["data"];
+      this.taskStatus = true;
+    });
     this.editTask = { editId: "", title: "", description: "" };
   }
 
@@ -74,6 +88,20 @@ export class AppComponent implements OnInit {
     observable.subscribe(data => {
       console.log("Got one task!", data);
       this.showTask = data["data"];
+    });
+  }
+
+  deleteOneTaskFromService(taskID: string) {
+    let observable = this._httpService.deleteOneTask(taskID);
+    observable.subscribe(data => {
+      console.log("Deleted one task!", data);
+      this.showTask = data["data"];
+    });
+    let updated_observable = this._httpService.getTasks();
+    updated_observable.subscribe(data => {
+      console.log("Updated task list!", data);
+      this.tasks = data["data"];
+      this.taskStatus = true;
     });
   }
 }

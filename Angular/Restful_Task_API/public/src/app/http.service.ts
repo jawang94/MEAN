@@ -17,10 +17,14 @@ export class HttpService {
   }
 
   getTasks() {
-    return this._http.get("/tasks");
+    return this._http.get("/tasks/");
   }
 
   getOneTask(id: string) {
     return this._http.get("/tasks/" + id);
+  }
+
+  deleteOneTask(id: string) {
+    return this._http.delete("/tasks/" + id);
   }
 }

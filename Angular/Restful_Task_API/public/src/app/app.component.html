@@ -41,14 +41,20 @@
           value="{{task._id}}"
           (click)="getOneTaskFromService(task._id)"
         >
-          SHOW
+          SHOW / EDIT
+        </button>
+        <button
+          value="{{task._id}}"
+          (click)="deleteOneTaskFromService(task._id)"
+        >
+          DELETE
         </button>
       </div>
     </div>
 
     <div class="showTask" *ngFor="let task of showTask">
       <h1>Editing task {{ task._id }}</h1>
-      <form (submit)="onSubmitEdit()">
+      <form (ngSubmit)="onSubmitEdit(task)">
         <!-- use the json pipe to see how newTask changes in real time -->
         <p>
           Old Title: {{ task.title | json }} New Title:
@@ -58,12 +64,6 @@
           Old Description: {{ task.description | json }} New Description:
           {{ editTask.description | json }}
         </p>
-        <input
-          type="hidden"
-          name="editTask.editId"
-          [(ngModel)]="editTask.editId"
-          value="{{user.userId}}"
-        />
         <input
           type="text"
           name="editTask.title"

@@ -14,10 +14,10 @@ describe("AppComponent", () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'TASKS'`, () => {
+  it(`should have as title 'Restful Tasks'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual("TASKS");
+    expect(app.title).toEqual("Restful Tasks");
   });
 
   it("should render title in a h1 tag", () => {
@@ -25,7 +25,7 @@ describe("AppComponent", () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector("h1").textContent).toContain(
-      "Welcome to public!"
+      "Welcome to Restful Tasks!"
     );
   });
 });
