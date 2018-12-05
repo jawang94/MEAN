@@ -1,3 +1,10 @@
-<p>
-  chicago works!
-</p>
+<h1>City: {{ chicago.name }}</h1>
+<p>Humidity: {{ chicago.main.humidity }}</p>
+<p>Temperature (Average): {{ chicago.main.temp }}</p>
+<p>Temperature (High): {{ chicago.main.temp_max }}</p>
+<p>Temperature (Low): {{ chicago.main.temp_min }}</p>
+<p>Status: {{ chicago.weather[0].main }}</p>
+<img
+  src="https://images.pexels.com/photos/167200/pexels-photo-167200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  alt="chicago"
+/>

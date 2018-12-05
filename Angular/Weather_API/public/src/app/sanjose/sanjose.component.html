@@ -1,3 +1,10 @@
-<p>
-  sanjose works!
-</p>
+<h1>City: {{ sanjose.name }}</h1>
+<p>Humidity: {{ sanjose.main.humidity }}</p>
+<p>Temperature (Average): {{ sanjose.main.temp }}</p>
+<p>Temperature (High): {{ sanjose.main.temp_max }}</p>
+<p>Temperature (Low): {{ sanjose.main.temp_min }}</p>
+<p>Status: {{ sanjose.weather[0].main }}</p>
+<img
+  src="https://images.pexels.com/photos/1635439/pexels-photo-1635439.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  alt="san jose"
+/>

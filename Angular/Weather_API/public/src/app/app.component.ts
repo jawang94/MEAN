@@ -8,12 +8,6 @@ import { HttpService } from "./http.service";
 })
 export class AppComponent implements OnInit {
   title = "Dojo Weather Forecast";
-  seattle: any;
-  sanjose: any;
-  burbank: any;
-  dallas: any;
-  dc: any;
-  chicago: any;
 
   constructor(private _httpService: HttpService) {}
 

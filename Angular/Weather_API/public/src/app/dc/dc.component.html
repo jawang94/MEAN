@@ -1,3 +1,10 @@
-<p>
-  dc works!
-</p>
+<h1>City: {{ washingtonDC.name }}</h1>
+<p>Humidity: {{ washingtonDC.main.humidity }}</p>
+<p>Temperature (Average): {{ washingtonDC.main.temp }}</p>
+<p>Temperature (High): {{ washingtonDC.main.temp_max }}</p>
+<p>Temperature (Low): {{ washingtonDC.main.temp_min }}</p>
+<p>Status: {{ washingtonDC.weather[0].main }}</p>
+<img
+  src="https://images.pexels.com/photos/208702/pexels-photo-208702.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  alt="washington dc"
+/>

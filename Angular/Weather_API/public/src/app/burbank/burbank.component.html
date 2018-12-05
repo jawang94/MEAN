@@ -1,3 +1,10 @@
-<p>
-  burbank works!
-</p>
+<h1>City: {{ burbank.name }}</h1>
+<p>Humidity: {{ burbank.main.humidity }}</p>
+<p>Temperature (Average): {{ burbank.main.temp }}</p>
+<p>Temperature (High): {{ burbank.main.temp_max }}</p>
+<p>Temperature (Low): {{ burbank.main.temp_min }}</p>
+<p>Status: {{ burbank.weather[0].main }}</p>
+<img
+  src="https://images.pexels.com/photos/462331/pexels-photo-462331.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  alt="burbank"
+/>
