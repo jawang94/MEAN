@@ -1,0 +1,13 @@
+<div class="newCake">
+  <h1>Editing {{ selectedAuthor.name }}</h1>
+  <form (submit)="onSubmitEdit()" (reset)="goHome()">
+    <p>{{ authorEdit.name | json }}</p>
+    <input
+      type="text"
+      name="authorEdit.name"
+      [(ngModel)]="authorEdit.name"
+      placeholder="New Author Name"
+    />
+    <input type="submit" value="Edit" /> <input type="reset" value="Cancel" />
+  </form>
+</div>

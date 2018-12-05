@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Favorite Authors</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div style="text-align:center">
+      <h1>{{ title }}!</h1>
+      <h2>We have quotes by:</h2>
+    </div>
+    <button [routerLink]="['/new']" id="add">Add an author</button>
+    <button (click)="getAllAuthors()" id="home">Home</button>
+
+    <div id="authorList">
+      <table style="text-align:center; margin: 0 auto">
+        <tr>
+          <th>Name</th>
+          <th>Actions Available</th>
+        </tr>
+        <tr *ngFor="let author of authors">
+          <td>{{ author.name }}</td>
+          <td>
+            <button [routerLink]="['/edit', author._id]">Edit</button>
+            <button (click)="deleteAuthor(author)">Delete</button>
+            <button (click)="imabutton()">dont click me</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <router-outlet> </router-outlet>
+  </body>
+</html>
