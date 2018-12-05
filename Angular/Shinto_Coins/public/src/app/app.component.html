@@ -1,0 +1,24 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Shinto Coins</title>
+  </head>
+  <body>
+    <div style="text-align:center">
+      <h1>{{ title }}!</h1>
+      <h2>
+        Welcome to ShintoCoins! ShintoCoins are coins made by solving
+        algorithms! To get started, head over to Mine Coins and get to work!
+      </h2>
+    </div>
+    <button [routerLink]="['/']">Home</button>
+    <button [routerLink]="['/mine']">Mine Coins</button>
+    <button [routerLink]="['/buy']">Buy Coins</button>
+    <button [routerLink]="['/sell']">Sell Coins</button>
+    <button [routerLink]="['/ledger']">Browse Ledger</button>
+
+    <router-outlet></router-outlet>
+  </body>
+</html>

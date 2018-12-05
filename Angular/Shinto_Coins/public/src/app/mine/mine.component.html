@@ -1,0 +1,17 @@
+<div style="text-align:center">
+  <h1>Mine ShintoCoins!</h1>
+  <h2>
+    Here you can mine ShintoCoins by being the first to solve the algorithm:
+  </h2>
+  <h2>What is the 7th Fibonacci sequence number?</h2>
+  <form (submit)="onSubmit()">
+    <input
+      type="text"
+      name="guess"
+      [(ngModel)]="guess"
+      placeholder="Take a guess"
+    />
+    <input type="submit" value="Mine" />
+  </form>
+  <h2>{{ result }}</h2>
+</div>

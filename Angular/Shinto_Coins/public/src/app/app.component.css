@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+    margin: 0 auto;
+    border: 3px solid #FB6542;
+    background-color: #FFBB00;
+    padding: 1%;
+    margin: 1%;
+}
+
+h2 {
+    color: #375E97
+}
+
+button {
+    width: auto;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #FFBB00;
+    color: #3F681C;
+    font-weight: bold;
+}

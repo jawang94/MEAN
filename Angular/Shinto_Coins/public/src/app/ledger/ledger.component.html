@@ -1,0 +1,18 @@
+<div style="text-align:center; margin: 0 auto">
+  <h1>Browse the Ledger</h1>
+  <h2>Here you can browse all ShintoCoin transactions.</h2>
+  <table style="text-align:center; margin: 0 auto">
+    <h3>ShintoCoin Ledger</h3>
+    <tr>
+      <th>Action</th>
+      <th>Amount</th>
+      <th>Value</th>
+    </tr>
+    <tr *ngFor="let trans of transactionHistory">
+      <td>{{ trans.action }}{{ trans.id }}</td>
+      <td>{{ trans.amount }}</td>
+      <td>{{ trans.value }}</td>
+      <button [routerLink]="['/transaction', trans.id]">Details</button>
+    </tr>
+  </table>
+</div>
