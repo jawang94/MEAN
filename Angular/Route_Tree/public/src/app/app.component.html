@@ -1,9 +1,10 @@
-<!-- The content below is only a placeholder and can be replaced. -->
-<div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
+<div style="border: 1px solid black">
+  <div style="text-align:center">
+    <h1>Welcome to {{ title }}!</h1>
+  </div>
+
+  <button [routerLink]="['products']">Products</button>
+  <button [routerLink]="['reviews']">Reviews</button>
+
+  <router-outlet></router-outlet>
 </div>
-
-<button [routerLink]="['products']">Products</button>
-<button [routerLink]="['reviews']">Reviews</button>
-
-<router-outlet></router-outlet>

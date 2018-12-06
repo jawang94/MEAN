@@ -1,0 +1,38 @@
+<div class="editProduct">
+  <h1>Edit Product</h1>
+  <form (submit)="onSubmit()">
+    <p>{{ editProduct | json }}</p>
+    <input
+      type="text"
+      name="editProduct.title"
+      required
+      minlength="3"
+      [(ngModel)]="editProduct.title"
+      placeholder="{{selectedProduct.title}}"
+      #title="ngModel"
+    />
+    <input
+      type="text"
+      name="editProduct.price"
+      required
+      [(ngModel)]="editProduct.price"
+      placeholder="{{selectedProduct.price}}"
+      #price="ngModel"
+    />
+    <input
+      type="text"
+      name="editProduct.imageURL"
+      [(ngModel)]="editProduct.imageURL"
+      placeholder="{{selectedProduct.imageURL}}"
+    />
+    <input type="submit" value="Submit" />
+  </form>
+  <p>
+    Title Requirements: {{ title.errors | json }} - Valid:
+    {{ title.valid | json }}
+  </p>
+  <p>
+    Price Requirements:{{ price.errors | json }} - Valid:
+    {{ price.valid | json }}
+  </p>
+</div>

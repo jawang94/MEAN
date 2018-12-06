@@ -1,0 +1,17 @@
+img {
+    width: 50%;
+    height: auto;
+}
+
+.outerProductBox {
+    width: 25%;
+    height: auto;
+    display: inline-block;
+}
+
+.productBox {
+    margin: 1%;
+    border: 1px solid black;
+    width: 100%;
+    height: auto;
+}

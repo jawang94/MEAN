@@ -1,0 +1,39 @@
+<div class="newProduct">
+  <h1>Create a New Product</h1>
+
+  <form (submit)="onSubmit()" (reset)="onCancel()" name="myForm">
+    <p>{{ newProduct | json }}</p>
+    <input
+      type="text"
+      name="newProduct.title"
+      required
+      minlength="3"
+      [(ngModel)]="newProduct.title"
+      placeholder="Product Title"
+      #title="ngModel"
+    />
+    <input
+      type="text"
+      name="newProduct.price"
+      required
+      [(ngModel)]="newProduct.price"
+      placeholder="Product Price"
+      #price="ngModel"
+    />
+    <input
+      type="text"
+      name="newProduct.imageURL"
+      [(ngModel)]="newProduct.imageURL"
+      placeholder="Product Image URL"
+    />
+    <input type="submit" value="Create" /> <input type="reset" value="Cancel" />
+  </form>
+  <p>
+    Title Requirements: {{ title.errors | json }} - Valid:
+    {{ title.valid | json }}
+  </p>
+  <p>
+    Price Requirements:{{ price.errors | json }} - Valid:
+    {{ price.valid | json }}
+  </p>
+</div>

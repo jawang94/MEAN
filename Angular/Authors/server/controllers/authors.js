@@ -1,5 +1,3 @@
-const mongoose = require("mongoose");
-// const Author = mongoose.model("Author");
 const Author = require("../models/author");
 
 module.exports = {
